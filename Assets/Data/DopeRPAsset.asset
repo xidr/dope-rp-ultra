@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778ad8e651f0de342a2caea668796a73, type: 3}
+  m_Name: DopeRPAsset
+  m_EditorClassIdentifier: 
+  samplingOn: 0
+  useDynamicBatching: 1
+  useGPUInstancing: 1
+  useSRPBatcher: 1
+  LitDeferredMaterial: {fileID: 2100000, guid: 00fc1a388c1a3d08cb948b0cf11725a5, type: 2}
+  ambientLightOn: 0
+  ambientLightScale: 0
+  mainDirLightStrength: 0
+  m_shadowsSettings:
+    shadowsOn: 0
+    maxDistance: 100
+    distanceFade: 0.1
+    directional:
+      atlasSize: 1024
+      filter: 1
+      cascades: 1
+      cascadeRatio1: 0.1
+      cascadeRatio2: 0.25
+      cascadeRatio3: 0.5
+  m_SSAO: 0
+  ssaoSettings:
+    samplesCount: 0
+    noiseTexture: {fileID: 0}
+    randomSize: 0
+    sampleRadius: 0
+    bias: 0
+    magnitude: 0
+    contrast: 0
+    SSAOMaterial: {fileID: 0}
+  m_decalsOn: 0
+  m_postFXOn: 0
+  m_postFXSettings: {fileID: 0}
