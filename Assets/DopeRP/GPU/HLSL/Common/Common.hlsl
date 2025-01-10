@@ -22,6 +22,14 @@
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl"
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Packing.hlsl"
 
+struct Light
+{
+	
+	float3 direction;
+	float3 color;
+	float attenuation;
+	
+};
 
 float2 MultiplyUV (float4x4 mat, float2 inUV) {
 	float4 temp = float4 (inUV.x, inUV.y, 0, 0);

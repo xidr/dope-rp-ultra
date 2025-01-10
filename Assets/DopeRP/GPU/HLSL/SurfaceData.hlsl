@@ -13,7 +13,9 @@ struct SurfaceData {
 	float depth;
 	float3 specular;
 	// float dither;
-
+	bool isMetal;
+	
+	
 	// // #if defined(MATERIAL_HAS_REFRACTION)
 	// 	float etaRI;
 	// 	float etaIR;
@@ -22,5 +24,7 @@ struct SurfaceData {
 	// 	float3  absorption;
 	// // #endif
 };
+
+// TODO: make a dedicated structure for PBR material?
 
 #endif

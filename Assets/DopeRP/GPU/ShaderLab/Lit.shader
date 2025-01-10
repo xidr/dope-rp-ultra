@@ -18,6 +18,7 @@ Shader "DopeRP/Shaders/Lit"
 		_Metallic ("Metallic", Range(0, 1)) = 0
 		_Roughness ("Roughness", Range(0, 1)) = 0.5
 		_Reflectance ("Reflectance", Range(0, 1)) = 0.5
+		[Enum(Off, 0, On, 1)] _IsMetal ("Is Metal", Float) = 0
 		
 		[Toggle(_USE_EMISSION)] _UseEmission ("Use Emission", Float) = 0
 		[NoScaleOffset] _EmissionMap("Emission", 2D) = "white" {}

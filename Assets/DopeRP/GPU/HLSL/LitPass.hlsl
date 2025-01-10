@@ -23,7 +23,8 @@ UNITY_DEFINE_INSTANCED_PROP(float, _EmissionScale)
 
 	UNITY_DEFINE_INSTANCED_PROP(float, _Metallic)
 	UNITY_DEFINE_INSTANCED_PROP(float, _Roughness)
-	UNITY_DEFINE_INSTANCED_PROP(float, _Reflectance)	
+	UNITY_DEFINE_INSTANCED_PROP(float, _Reflectance)
+	UNITY_DEFINE_INSTANCED_PROP(float, _IsMetal)	
 
 UNITY_INSTANCING_BUFFER_END(LitBasePerMaterial)
 
@@ -193,6 +194,7 @@ float4 frag(Interpolators i) : SV_TARGET
 	surfaceData.positionWS = i.positionWS;
 	surfaceData.alpha = baseColor.a;
 	surfaceData.roughness = perceptualRoughnessToRoughness(UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _Roughness));
+	surfaceData.isMetal = UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _IsMetal);
 	surfaceData.f0 = computeReflectance(baseColor, surfaceData.metallic, UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _Reflectance));
 	surfaceData.specular = SampleEnvironment(surfaceData.viewDirection, i.normalWS);
 

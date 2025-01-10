@@ -5,6 +5,7 @@
 #include "Assets/DopeRP/GPU/HLSL/SurfaceData.hlsl"
 #include "Assets/DopeRP/GPU/HLSL/BRDF.hlsl"
 #include "Assets/DopeRP/GPU/HLSL/Shadows.hlsl"
+#include "Assets/DopeRP/GPU/HLSL/BRDF_EXO.hlsl"
 
 #define MAX_OTHER_LIGHT_COUNT 60
 
@@ -36,14 +37,7 @@ CBUFFER_START(_LightingMain)
 CBUFFER_END
 
 
-struct Light
-{
-	
-	float3 direction;
-	float3 color;
-	float attenuation;
-	
-};
+
 
 DirectionalShadowData GetDirectionalShadowData (ShadowData shadowData)
 {
@@ -100,19 +94,26 @@ Light GetOtherLight (int index, SurfaceData surfaceWS)
 
 float3 GetLighting(SurfaceData surfaceData, Light light)
 {
-	float3 h = normalize(surfaceData.viewDirection + light.direction);
+	// float3 h = normalize(surfaceData.viewDirection + light.direction);
+	//
+	// float NoV = clampNoV(dot(surfaceData.normal, surfaceData.viewDirection));
+	// float NoL = saturate(dot(surfaceData.normal, light.direction));
+	// float NoH = saturate(dot(surfaceData.normal, h));
+	// float LoH = saturate(dot(light.direction, h));
+	//
+	// float3 Fr = specularLobe(surfaceData, light.direction, h, NoV, NoL, NoH, LoH);
+	// float3 Fd = diffuseLobe(surfaceData, NoV, NoL, LoH);
+	//
+	// float3 color = Fd + Fr;
+	//
+	// color = color * light.color * NoL * light.attenuation;
 
-	float NoV = clampNoV(dot(surfaceData.normal, surfaceData.viewDirection));
-	float NoL = saturate(dot(surfaceData.normal, light.direction));
-	float NoH = saturate(dot(surfaceData.normal, h));
-	float LoH = saturate(dot(light.direction, h));
+	float3 color = finalBRDF(surfaceData, light);
 	
-	float3 Fr = specularLobe(surfaceData, light.direction, h, NoV, NoL, NoH, LoH);
-	float3 Fd = diffuseLobe(surfaceData, NoV, NoL, LoH);
+	// color = color / (color + float3(1,1,1));
 
-	float3 color = Fd + Fr;
-
-	color = color * light.color * NoL * light.attenuation;
+	// float3 finalLight = exp(log(color) * float3(1.0 / 2.2, 1.0 / 2.2, 1.0 / 2.2));
+	// float3 finalLight = exp(log(color) * float3(0.4545, 0.4545, 0.4545));
 	
 	return color;
 }

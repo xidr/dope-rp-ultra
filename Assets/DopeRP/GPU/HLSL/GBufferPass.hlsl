@@ -19,6 +19,7 @@ UNITY_INSTANCING_BUFFER_START(LitBasePerMaterial)
     UNITY_DEFINE_INSTANCED_PROP(float, _Metallic)
     UNITY_DEFINE_INSTANCED_PROP(float, _Roughness)
     UNITY_DEFINE_INSTANCED_PROP(float, _Reflectance)
+    UNITY_DEFINE_INSTANCED_PROP(float, _IsMetal)
 
     UNITY_DEFINE_INSTANCED_PROP(float, _Cutoff)
 
@@ -165,7 +166,9 @@ fragOutput frag(Interpolators i)
 
     float metallic = UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _Metallic);
     float roughness = perceptualRoughnessToRoughness(UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _Roughness));
+    roughness = UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _Roughness);
     float reflectance = UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _Reflectance);
+    float isMetal = UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _IsMetal);
     float emission = 0;
     
     #if defined(_USE_EMISSION)
@@ -174,7 +177,7 @@ fragOutput frag(Interpolators i)
     
     #endif
     
-    o.BRDF = float4(metallic, roughness, reflectance, emission);
+    o.BRDF = float4(isMetal, roughness, reflectance, emission);
 
     float3 viewDir = normalize(_WorldSpaceCameraPos - i.positionWS);
     float3 specular = SampleEnvironment(viewDir, i.normalWS);
