@@ -13,7 +13,7 @@ struct SurfaceData {
 	float depth;
 	float3 specular;
 	// float dither;
-	bool isMetal;
+	// bool isMetal;
 	
 	
 	// // #if defined(MATERIAL_HAS_REFRACTION)

@@ -129,7 +129,7 @@ float4 frag(Interpolators i) : SV_TARGET
 	float4 brdfAtlas = SAMPLE_TEXTURE2D(_G_BRDFAtlas, sampler_G_BRDFAtlas, i.uv);
 	
 	surfaceData.metallic = brdfAtlas.x;
-	surfaceData.isMetal = brdfAtlas.x;
+	// surfaceData.isMetal = brdfAtlas.x;
 	#ifdef _PREMULTIPLY_ALPHA
 		surfaceData.color = computeDiffuseColor(baseColor.rgb, surfaceData.metallic) * baseColor.a;
 	#else

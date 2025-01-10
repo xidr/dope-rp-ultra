@@ -21,6 +21,18 @@ static const half  HALF_HUNDRED     = half(100.0);
  * @public-api
  */
 
+// float pow_v(float3 x, float y)
+// {
+// 	return float3(pow(x.x, y), pow(x.y, y), pow(x.z, y));
+// }
+
+
+
+// float pow(float x, float y)
+// {
+// 	return exp(log(x) * y);
+// }
+
 float pow2(float x) {
 	return x * x;
 }

@@ -234,7 +234,7 @@ float3 GetLighting(SurfaceData surfaceData)
 	//
 	// #endif
 
-	
+	color = pow(color/(color + 1), 1.0/2.2);
 	return color;
 }
 

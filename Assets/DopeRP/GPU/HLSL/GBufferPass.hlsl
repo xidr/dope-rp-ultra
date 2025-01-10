@@ -168,7 +168,7 @@ fragOutput frag(Interpolators i)
     float roughness = perceptualRoughnessToRoughness(UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _Roughness));
     roughness = UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _Roughness);
     float reflectance = UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _Reflectance);
-    float isMetal = UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _IsMetal);
+    // float isMetal = UNITY_ACCESS_INSTANCED_PROP(LitBasePerMaterial, _IsMetal);
     float emission = 0;
     
     #if defined(_USE_EMISSION)
@@ -177,7 +177,7 @@ fragOutput frag(Interpolators i)
     
     #endif
     
-    o.BRDF = float4(isMetal, roughness, reflectance, emission);
+    o.BRDF = float4(metallic, roughness, reflectance, emission);
 
     float3 viewDir = normalize(_WorldSpaceCameraPos - i.positionWS);
     float3 specular = SampleEnvironment(viewDir, i.normalWS);
