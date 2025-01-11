@@ -57,7 +57,7 @@ float3 finalBRDF(SurfaceData surfaceData, Light lightData)
 {
     // float3 lightIntensity = lightData.color * lightData.attenuation;
     float3 h = normalize(surfaceData.viewDirection + lightData.direction);
-
+    // surfaceData.roughness = 0.3;
     float NoV = saturate(dot(surfaceData.normal, surfaceData.viewDirection));
     float NoL = saturate(dot(surfaceData.normal, lightData.direction));
     float NoH = saturate(dot(surfaceData.normal, h));
@@ -77,7 +77,7 @@ float3 finalBRDF(SurfaceData surfaceData, Light lightData)
 
     // float3 kS = F;
     float3 kD = float3(1.0, 1.0, 1.0) - F;
-    // kD *= float3(1.0, 1.0, 1.0) - surfaceData.metallic;
+    kD *= float3(1.0, 1.0, 1.0) - surfaceData.metallic;
     
     float3 SpecBRDF_nom = D * G * F;
     float SpecBRDF_denom = 4.0 * NoV * NoL;

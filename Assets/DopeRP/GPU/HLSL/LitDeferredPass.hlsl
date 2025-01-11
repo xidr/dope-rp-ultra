@@ -133,7 +133,8 @@ float4 frag(Interpolators i) : SV_TARGET
 	#ifdef _PREMULTIPLY_ALPHA
 		surfaceData.color = computeDiffuseColor(baseColor.rgb, surfaceData.metallic) * baseColor.a;
 	#else
-		surfaceData.color = computeDiffuseColor(baseColor.rgb, surfaceData.metallic);
+		// surfaceData.color = computeDiffuseColor(baseColor.rgb, surfaceData.metallic);
+		surfaceData.color = baseColor;
 	#endif
 	surfaceData.alpha = baseColor.a;
 	surfaceData.roughness = brdfAtlas.y;
