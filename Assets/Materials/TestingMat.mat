@@ -85,7 +85,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _IsMetal: 1
-    - _Metallic: 0
+    - _Metallic: 1
     - _Mode: 0
     - _NormalScale: 0
     - _OcclusionStrength: 1
@@ -93,7 +93,7 @@ Material:
     - _PremulAlpha: 0
     - _RCutout: 0
     - _Reflectance: 0.367
-    - _Roughness: 0
+    - _Roughness: 0.353
     - _ShadowsClip: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
